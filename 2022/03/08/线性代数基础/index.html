@@ -6,20 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>第一篇文章 | Hexo</title>
+  <title>线性代数基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基础用法x&#x3D;torch.arange(12)    创建一维数组，0-11 x&#x3D;x.reshape(3,4)    不改变内容，改变形状为3行4列的二维数组 torch.zeros((2,3,4)) 元素全初始为0 形状为234  torch.tensor([1,2],[2,3],[3,4])  创建特定数组  数组间的元素是对应元素的运算 对张量中所有的元素求和会得到一个只有">
+  <meta name="description" content="标量是只有一个数值的向量，向量是一阶张量，矩阵是二阶张量，以上为高阶张量。 矩阵相乘是合并两个矩阵，其中C&#x3D;AB的A的列维度必须与B的行维度相同 Hadamard积是两个同阶矩阵按元素相乘      注意不要与矩阵相乘混淆 通过求和函数实现对张量降维，如（axis&#x3D;0）则是对行求和，直接除去行维度，列为1，对哪个维度降维则axis赋为几               也可使用ke">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一篇文章">
-<meta property="og:url" content="http://example.com/2022/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/index.html">
+<meta property="og:title" content="线性代数基础">
+<meta property="og:url" content="http://example.com/2022/03/08/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="基础用法x&#x3D;torch.arange(12)    创建一维数组，0-11 x&#x3D;x.reshape(3,4)    不改变内容，改变形状为3行4列的二维数组 torch.zeros((2,3,4)) 元素全初始为0 形状为234  torch.tensor([1,2],[2,3],[3,4])  创建特定数组  数组间的元素是对应元素的运算 对张量中所有的元素求和会得到一个只有">
+<meta property="og:description" content="标量是只有一个数值的向量，向量是一阶张量，矩阵是二阶张量，以上为高阶张量。 矩阵相乘是合并两个矩阵，其中C&#x3D;AB的A的列维度必须与B的行维度相同 Hadamard积是两个同阶矩阵按元素相乘      注意不要与矩阵相乘混淆 通过求和函数实现对张量降维，如（axis&#x3D;0）则是对行求和，直接除去行维度，列为1，对哪个维度降维则axis赋为几               也可使用ke">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-07T09:52:43.000Z">
-<meta property="article:modified_time" content="2022-03-07T13:31:29.536Z">
+<meta property="og:image" content="c:/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20220308113815153.png">
+<meta property="article:published_time" content="2022-03-08T03:23:45.000Z">
+<meta property="article:modified_time" content="2022-03-08T03:38:33.348Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="torch">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/DELL/AppData/Roaming/Typora/typora-user-images/image-20220308113815153.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,36 +156,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-第一篇文章" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-线性代数基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      第一篇文章
+      线性代数基础
     </h1>
   
 
         
-        <a href="/2022/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2022-03-07T09:52:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-07</time>
+        <a href="/2022/03/08/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2022-03-08T03:23:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h3><p>x&#x3D;torch.arange(12)    创建一维数组，0-11</p>
-<p>x&#x3D;x.reshape(3,4)    不改变内容，改变形状为3行4列的二维数组</p>
-<p>torch.zeros((2,3,4)) 元素全初始为0 形状为234</p>
-<p> torch.tensor([1,2],[2,3],[3,4])  创建特定数组 </p>
-<p>数组间的元素是对应元素的运算</p>
-<p>对张量中所有的元素求和会得到一个只有一个元素的张量</p>
-<p> 形状不同的两个向量，会调用<strong>广播机制</strong>来操作（如相加） 三行一列的向量与一行两列的向量相加，会得到一个三行两列的向量([a1],[a2],[a3])+([b1,b2])&#x3D;([a1+b1],[a1+b2]…[a3+b1],[a3+b2])</p>
-<p> X[-1]选择最后一个元素，X[1:3]选择第二个和第三个元素（右边闭区间，取下标1和2）</p>
-<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>对于缺失数据，数值类可以直接删除整行或者填补为非数值类的均值</p>
-<p>非数值类可以将其分类，缺失值为一类，其他每种为一类，有多少类则增加多少列，列对应的值用0&#x2F;1区分</p>
+        <p>标量是只有一个数值的向量，向量是一阶张量，矩阵是二阶张量，以上为高阶张量。</p>
+<p>矩阵相乘是合并两个矩阵，其中C&#x3D;AB的A的列维度必须与B的行维度相同</p>
+<p>Hadamard积是两个同阶矩阵按元素相乘      <strong>注意不要与矩阵相乘混淆</strong></p>
+<p>通过求和函数实现对张量降维，如（axis&#x3D;0）则是对行求和，直接除去行维度，列为1，对哪个维度降维则axis赋为几               也可使用keepdims实现非降维求和</p>
+<p>点积是按元素相乘之后求和</p>
+<p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220308113815153.png" alt="image-20220308113815153"></p>
 
       
 
@@ -214,17 +211,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">torch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -275,7 +261,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/08/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -289,18 +275,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/08/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          线性代数基础
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/03/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2022/03/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一篇文章</div>
       <i class="icon-circle-right"></i>
     </a>
   
