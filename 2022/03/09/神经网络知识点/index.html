@@ -16,7 +16,7 @@
 <meta property="og:description" content="前向传播过程：输入层给定X，经过一次计算后得到z，再经过激活函数后得到a[1]，再将a[1]作为第二次的输入进行迭代计算，n次之后得到a[n]&#x3D;y_hat(预测值)，即为一次正向传播过程，也可将x理解为a[0]。 反向传播过程：根据y值不断地向前求导得出dz、dw的过程 。 激活函数的选择一般选择tanh函数，关于原点对称，数据平均值更接近于0  sigmoid函数一般只用在二分类问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-09T12:29:40.000Z">
-<meta property="article:modified_time" content="2022-03-10T13:21:22.876Z">
+<meta property="article:modified_time" content="2022-03-16T11:42:54.706Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -190,6 +190,11 @@
 <p>也可使用early stopping 来提早停止训练神经网络，通过找到w的较小值和较大值，再找出一个中间值来判断是否停止。 缓解过拟合。</p>
 <hr>
 <p><strong>提高训练速度</strong></p>
+<p>归一化输入：先零均值化，将节点调整至原点周围；再归一化方差，使其对应于两轴的布局均匀。（以二维为例）</p>
+<p>梯度消失和梯度爆炸：使用线性激活函数时，w值指数型变化，w大于1，w^l极大梯度爆炸，w小于1梯度消失</p>
+<p>梯度检验通常使用双边误差   即求导点的左右端定义。</p>
+<hr>
+<p> k折交叉验证，将数据集k等分，每次取其中一个作为验证集，其他的作为训练集，一共进行k次，得出k次的验证概率，最后取平均值则为最终的验证概率。常用k取5或者10。</p>
 
       
 
