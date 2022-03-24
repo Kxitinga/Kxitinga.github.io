@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>神经网络知识点 | Hexo</title>
+  <title>Tag: 综述 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前向传播过程：输入层给定X，经过一次计算后得到z，再经过激活函数后得到a[1]，再将a[1]作为第二次的输入进行迭代计算，n次之后得到a[n]&#x3D;y_hat(预测值)，即为一次正向传播过程，也可将x理解为a[0]。 反向传播过程：根据y值不断地向前求导得出dz、dw的过程 。 激活函数的选择一般选择tanh函数，关于原点对称，数据平均值更接近于0  sigmoid函数一般只用在二分类问题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="神经网络知识点">
-<meta property="og:url" content="http://example.com/2022/03/09/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/%E7%BB%BC%E8%BF%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前向传播过程：输入层给定X，经过一次计算后得到z，再经过激活函数后得到a[1]，再将a[1]作为第二次的输入进行迭代计算，n次之后得到a[n]&#x3D;y_hat(预测值)，即为一次正向传播过程，也可将x理解为a[0]。 反向传播过程：根据y值不断地向前求导得出dz、dw的过程 。 激活函数的选择一般选择tanh函数，关于原点对称，数据平均值更接近于0  sigmoid函数一般只用在二分类问题">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-09T12:29:40.000Z">
-<meta property="article:modified_time" content="2022-03-18T07:59:39.379Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,194 +146,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-神经网络知识点" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      神经网络知识点
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/03/24/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2022-03-24T01:02:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-24</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/03/24/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AC%94%E8%AE%B0/">动作识别笔记</a>
     </h1>
   
 
-        
-        <a href="/2022/03/09/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-03-09T12:29:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>前向传播过程：输入层给定X，经过一次计算后得到z，再经过激活函数后得到a[1]，再将a[1]作为第二次的输入进行迭代计算，n次之后得到a[n]&#x3D;y_hat(预测值)，即为一次正向传播过程，也可将x理解为a[0]。</p>
-<p>反向传播过程：根据y值不断地向前求导得出dz、dw的过程 。</p>
-<p>激活函数的选择一般选择tanh函数，关于原点对称，数据平均值更接近于0 </p>
-<p>sigmoid函数一般只用在二分类问题。</p>
-<p>不同层的激活函数可以不一样。</p>
-<p>Relu函数a&#x3D;max(0,z) 通常效果比tanh和sigmoid函数好，因为其不存在斜率为0的地方&#x2F;也可用a&#x3D;max(0.01z,z)</p>
-<p>logistic回归，使用激活函数将第一躺得到的值作为第二趟的输入。</p>
-<p>进行一趟深度学习的过程 P41搭建神经网络块。</p>
-<p><strong>超参数：</strong>深度学习中控制实际参数的参数，如学习率，隐藏层层数，隐藏层的单元数，循环次数，激活函数，这些参数决定着w,b的变化，所以称为超参数。</p>
-<p><strong>偏差和方差</strong>：过拟合和欠拟合都有可能造成高偏差和高方差。</p>
-<p>偏差较高：调整神经网络，更多的隐藏层或者隐藏单元格，设置复杂的神经网络来尝试调整，偏差降低后再调整方差，常见的调整方差高的办法是更大的数据集，但偏差过高时增大数据集一般作用不大。</p>
-<hr>
-<p><strong>正则化</strong>：有助于缓解过拟合；     L2正则化，通过使用lambd参数来调整w。</p>
-<p>增大lambd   导致w[l]降低,最后导致z 减小，使得激活函数趋于线性，缓解过拟合，p50-51为推导过程。</p>
-<p><strong>dropout正则化</strong>：根据概率（各隐藏层节点每趟被保留的概率会变，每层的keep-prob都可能不同）每趟随机丢失一些节点，缓解过拟合。</p>
-<p><strong>inverted dropout：</strong>通过除去一些结点得到的每层的a值后，将其除以结点丢失的概率，确保在数量上弥补丢弃的部分数据，使计算下一趟a[l]时预期的a[l-1]不变，常见此法性能较优。</p>
-<p>也可使用early stopping 来提早停止训练神经网络，通过找到w的较小值和较大值，再找出一个中间值来判断是否停止。 缓解过拟合。</p>
-<hr>
-<p><strong>提高训练速度</strong></p>
-<p>归一化输入：先零均值化，将节点调整至原点周围；再归一化方差，使其对应于两轴的布局均匀。（以二维为例）</p>
-<p>梯度消失和梯度爆炸：使用线性激活函数时，w值指数型变化，w大于1，w^l极大梯度爆炸，w小于1梯度消失</p>
-<p>梯度检验通常使用双边误差   即求导点的左右端定义。</p>
-<hr>
-<p> k折交叉验证，将数据集k等分，每次取其中一个作为验证集，其他的作为训练集，一共进行k次，得出k次的验证概率，最后取平均值则为最终的验证概率。常用k取5或者10。</p>
-<hr>
-<p>随机梯度下降（样本大小为1时），选择合适大小的样本进行梯度下降，样本数量太小则会失去向量化带来的加速，受噪声影响较大进而导致损失函数一直在均值之间波动不会停留，因为梯队下降无法收敛。数量太大一次性执行较大样本比较耗费时间，mini-batch size尽量为中间某个合适值。</p>
-<hr>
-<p>指数加权平均，优点：指数计算在内存中只占用单行数字，如果需要获得刚精确得平均值，按正常的计算会更准确，但是保存过去的数值以及保存所求的最近几天的数值之和会比较占用内存</p>
-<p>学习率衰退：α1&#x3D;[1&#x2F;(1+decay-rate(下降率)*epoch-n)]α0,一次遍历衰退一次，一次为一代，也可为其他公式使学习率α随时间变化下降 ，目的是在损失函数接近均值时，降低学习率以减小在均值附近的波动。</p>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">综述</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/09/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2022/03/24/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          动作识别笔记
-        
-      </div>
-    </a>
   
   
-    <a href="/2022/03/09/numpy/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">numpy</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -360,9 +222,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
