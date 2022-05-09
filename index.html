@@ -148,6 +148,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/07/linux/">linux</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/07/linux/" class="archive-article-date">
+  	<time datetime="2022-05-07T07:04:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<hr>
+<p> rar工具安装，使用apt命令（几乎能安装大部分工具），apt install rar </p>
+<p> 输入带有文件路径的命令时，需要在路径前加上 &#x2F; （用来区分语句和路径） 不用加 .     </p>
+<p>打开conda镜像源编辑器  vim ~&#x2F;.condarc      先输入a  进入编辑模式     编辑之后按esc  再按：wq 进行保存退出</p>
+<p>显卡算力高于环境时  可以用export TORCH_CUDA_ARCH_LIST&#x3D;”7.5”  语句，修改合适的显卡算力</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">云平台虚拟环境经验</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/07/linux/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-动作识别笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -292,6 +371,10 @@
 <hr>
 <p>指数加权平均，优点：指数计算在内存中只占用单行数字，如果需要获得刚精确得平均值，按正常的计算会更准确，但是保存过去的数值以及保存所求的最近几天的数值之和会比较占用内存</p>
 <p>学习率衰退：α1&#x3D;[1&#x2F;(1+decay-rate(下降率)*epoch-n)]α0,一次遍历衰退一次，一次为一代，也可为其他公式使学习率α随时间变化下降 ，目的是在损失函数接近均值时，降低学习率以减小在均值附近的波动。</p>
+<hr>
+<p>多个输入通道，每个通道都有一个卷积核，结果是所有通道卷积结果的和&#x3D;多个输入通道得到单个输出通道</p>
+<p>可以有多个三维卷积核，每个核生成一个输出通道，得到多输出通道</p>
+<p>池化层可以在边缘检测过程中模糊边界，促使平移不变性</p>
 
       
 
@@ -855,6 +938,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">综述</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">云平台虚拟环境经验</a>
               </li>
             
             <div class="clearfix"></div>
