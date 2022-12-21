@@ -239,14 +239,43 @@
   <hr>
 <p>MySQL的安装：5.7.24<br>登录命令：mysql -u用户名 -p密码<br>链接其他数据库命令：mysql -u用户名 -h要链接的mysql服务器的ip地址(默认127.0.0.0) -p端口号(默认3306)</p>
 <h4>MySQL基础知识<h4>
+<h5>MySQL整体框架<h5>
 
-<p>MySQL整体框架</p>
 <p><img src="/2022/12/20/JavaWeb-MySQL/MySQLstatus.jpg" alt="整体框架"></p>
-<p>DDL操作数据库</p>
+<h5>DDL操作数据库<h5>
+
 <p><img src="/2022/12/20/JavaWeb-MySQL/DDLfordatabase.jpg" alt="DDL操作数据库"></p>
-<p>DDL修改表</p>
+<h5>DDL修改表<h5>
+
 <p><img src="/2022/12/20/JavaWeb-MySQL/DDLfortable.jpg" alt="DDL修改表"></p>
-</h4></h4> 
+<h5>
+    DML：对表中的数据增删改查
+</h5>
+
+<p>增：当对所有的列增加数据时，列名的列表可以省略，但实际开发中不建议省略，因为可以便于查看列的属性；</p>
+<p>改：如果updata语句没有加where条件，则会将表中所有数据全部修改！</p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/DQLQuery.jpg" alt="查询语法"></p>
+<p><strong>基础查询</strong>：(1)查询多个字段：SELECT  字段列表  FROM  表名；字段列表为*时表示查询所有数据      </p>
+<p>​                   (2)去除重复记录：SELECT  DISTINCT  字段列表  FROM  表名；</p>
+<p>​                   (3)起别名    原列名  AS  新列名；AS可以省略但原列名和新列名之间至少有一个空格；  </p>
+<p><strong>条件查询</strong>：SELECT  字段列表  FROM  表名  WHERE  条件列表；</p>
+<p>条件用于查询特定数据时对数据的筛选</p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2.jpg" alt="条件查询"></p>
+<p><strong>分组查询</strong>：</p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2.jpg" alt="分组查询"></p>
+<p><strong>排序查询</strong></p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2.jpg" alt="排序查询"></p>
+<p><strong>分页查询</strong>：</p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/.%5CJavaWeb-MySQL%5C%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2.jpg" alt="分页查询"></p>
+<p><strong>聚合函数</strong>：</p>
+<p><img src="/2022/12/20/JavaWeb-MySQL/%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0.jpg" alt="聚合函数"></p>
+<p>查：①查询所有列数据时，列表名可以使用*代替，但不建议使用；</p>
+<p>​        ②查询某几个固定字段可直接用（），如select * from 表名 where age in （18，20，22）；</p>
+<p>​        ③null值得比较不能使用&#x3D;，!&#x3D;，只能使用is 或者 is not ；</p>
+<p>​        ④模糊查询LIKE   通配符：(1)_：单表单个任意字符；(2)%：代表多个任意字符；</p>
+<p>​        ⑤null值不参与所有聚合函数的运算；</p>
+<p>​        ⑥分组查询时，where用于对参与查询的数据进行条件限制；</p>
+</h5></h5></h5></h5></h5></h5></h4></h4> 
       <!-- reward -->
       
     </div>
