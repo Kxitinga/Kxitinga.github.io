@@ -154,6 +154,58 @@
     
     
     <article
+  id="post-数据库设计"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/12/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/"
+    >数据库设计</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/12/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2022-12-22T02:11:32.000Z" itemprop="datePublished">2022-12-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p> <strong>数据库设计</strong></p>
+<p>一对多(多对一)实现方式：在<strong>多</strong>的一方建立<strong>外键</strong>，指向一的一方的主键；</p>
+<p>多对多实现方式：建立第三张<strong>中间表</strong>，中间表至少包含<strong>两个外键</strong>，分别<strong>关联两方主键</strong>；</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-MySQL02"
   class="article article-type-post"
   itemscope
@@ -191,6 +243,7 @@
 <p><img src="/2022/12/21/MySQL02/%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%E8%AF%AD%E6%B3%95.jpg" alt="外键约束语法"></p>
 <p>注：①当列是数字类型且有唯一约束时，使用 auto_increment 使列中数据保持自增长；</p>
 <p>​        ②MySQL不支持检查约束；</p>
+<p>​        ③ALTER TABLE  (表示多的这个表的表名 )    ADD  CONSTRAINT  (自命名外键名称，用于删除外键时使用)  FOREIGN  KEY([多]表的对应字段名,这里跟KEY之间没有空格)  REFERENCES  [一]表名称([一]表列名)；</p>
  
       <!-- reward -->
       
@@ -719,54 +772,6 @@
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/" rel="tag">numpy</a></li></ul>
 
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-softmax回归"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/03/08/softmax%E5%9B%9E%E5%BD%92/"
-    >softmax回归</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/03/08/softmax%E5%9B%9E%E5%BD%92/" class="article-date">
-  <time datetime="2022-03-08T12:26:28.000Z" itemprop="datePublished">2022-03-08</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>回归与分类：回归估计一个连续值（预测发展趋势）；分类预测一个离散类别（预测发展类别）。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 
