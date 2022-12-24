@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">67</span>
+            <span class="post-count">280</span>
         </span>
     </span>
 
@@ -103,8 +103,19 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p> <strong>数据库设计</strong></p>
+<p><img src="/2022/12/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E7%AE%80%E4%BB%8B.jpg" alt="设计简介"></p>
+<p><img src="/2022/12/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F.jpg" alt="实现方式"></p>
 <p>一对多(多对一)实现方式：在<strong>多</strong>的一方建立<strong>外键</strong>，指向一的一方的主键；</p>
 <p>多对多实现方式：建立第三张<strong>中间表</strong>，中间表至少包含<strong>两个外键</strong>，分别<strong>关联两方主键</strong>；</p>
+<p>一对一实现方式：在任意一方建立外键，关联对方主键，并设置外键唯一；</p>
+<p><strong>子查询</strong>：查询中嵌套查询，称嵌套的查询为子查询；</p>
+<p><img src="/2022/12/22/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/%E5%AD%90%E6%9F%A5%E8%AF%A2.jpg"></p>
+<p><strong>事务</strong>：包含<strong>一组数据库操作命令</strong>的一种机制、一个操作序列；</p>
+<p>事务把所有的命令作为一个整体一起向系统提交或撤销操作请求，这一组数据库命令<strong>要么同时成功，要么同时失败</strong>；</p>
+<p>事务是一个不可分割的工作逻辑单元；</p>
+<p>开启事务：START  TRANSACTION   或者BEGIN</p>
+<p>提交事务：COMMIT       (提交事务之后才正式在内存中执行事务操作所涉及的更改，不提交修改不会生效)</p>
+<p>回滚事务：ROLLBACK   (事务执行过程出现异常时，回滚至事务开启之前的状态)</p>
  
       <!-- reward -->
       
@@ -187,6 +198,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2022/12/23/JDBC/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            JDBC
+          
+        </div>
+      </a>
     
     
       <a href="/2022/12/21/MySQL02/" class="article-nav-link">
