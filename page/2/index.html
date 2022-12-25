@@ -154,6 +154,76 @@
     
     
     <article
+  id="post-动作识别笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/03/24/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AC%94%E8%AE%B0/"
+    >动作识别笔记</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/03/24/%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2022-03-24T01:02:22.000Z" itemprop="datePublished">2022-03-24</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <hr>
+<hr>
+<p>基于图像的动作识别较为成熟，针对视频的动作识别主要有以下几个难题：</p>
+<p>①数据集中不确定因素较多，光照、环境变化、物体形变(人物交互)、目标遮挡(人人交互)都会影响模型性能；</p>
+<p>②动作边界的不确定性：动作快、时间短的视频难以在时序上精准定位边界。</p>
+<p>③对于目前主流的对细粒度视频动作的识别中，动作差异性较小，细微差距难以分辨带来较大挑战。</p>
+<hr>
+<p>传统(将手工提取到的特征编码成高维的特征向量，然后利用特征向量训练分类器以进行动作识别，较高的时空复杂度，严重影响到算法的性能)：基于人体关节点、基于时空兴趣点和基于密集轨迹的特征提取</p>
+<p>基于深度学习：2D CNN；3D CNN；时空分解网络；</p>
+<hr>
+<p><strong>2D CNN：</strong>（第一阶段）针对单流的 2D CNN 无法建模时间信息的问题，Simonyan提出了双流网络，空间流网络以单帧 RGB 图像作为输入，用于建模外观特征；时间流网络以堆叠的光流图像作为输入，用于建模运动特征。训练时，空间流网络和时间流网络单独地训练。测试时，通过平均所有采样的视频帧汇总两个流的softmax得分，从而得到视频级预测结果。             </p>
+<p>光流仅表示相邻帧之间的运动信息，因此双流网络对时间上下文的访问十分有限，Ng 等[12] 提出采用长短期记忆网络（long short-term memory，LSTM），LSTM 能够更加有效地表达视频帧在时间序列上的依赖关系，从而实现对长时间序列进行建模。然而，其对于视频帧之间底层的时间信息建模是不够的，会造成时序信息的丢失，并且 LSTM 的引入会导致大量的计算开销，不利于网络后期的优化。</p>
+<p>因此，Wang等[14]提出了时域分段网（temporal segment networks，TSN）</p>
+<p>以上都需要预计算光流，光流的预计算和存储都十分昂贵，并且光流会导致设备延迟，限制了性能。</p>
+<p>（第二阶段）避免光流的提取：两种思路，一种思路是从光流算法的原理出发，通过设计卷积模块去隐式地模拟光流的提取过程，从而达到建模时间特征的目的；另一种思路是从光流算法的原理出发，通过设计卷积模块去隐式地模拟光流的提取过程，从而达到建模时间特征的目的；P4</p>
+<hr>
+<p><strong>3D CNN：</strong> Learning spatiotemporal features with 3D convolutional networks（里程碑）</p>
+<p>(新模型的探索)网络架构探索方面：<strong>拓展出Res3D</strong>：通过改变各卷积层滤波器的个数来保持网络架构的参数一致，从而探讨了输入帧的采样频率、空间分辨率以及卷积的类型对模型性能的影响参数量较C3D较少，性能得以提高；<strong>T-C3D(时域三维卷积网络)：</strong>T-C3D 引入了 TSN 的视频级监督方法，同时确保各片段的 3D CNN 共享权值，既有利于得到全局的时空特征，又不产生额外的参数。</p>
+<p>(现有模型的一系列精简操作以及优化)优化现有模型方面(涉及较为详细的优化操作)：</p>
+<hr>
+<p><strong>基于时空分解网络：</strong>通过将时空特征进行分开建模，以达到减少参数和易于优化的目的。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%BC%E8%BF%B0/" rel="tag">综述</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-神经网络知识点"
   class="article article-type-post"
   itemscope
