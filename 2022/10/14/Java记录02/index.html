@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">81</span>
+            <span class="post-count">1k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -107,6 +107,40 @@
   <hr>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组中涉及到的常见算法</p>
 <p>1.数组元素的赋值(杨辉三角、回形数等)<br>2.求数值型数组中元素的最大值、最小值、平均数、总和等<br>3.数组的复制、反转、查找(线性查找、二分法查找)<br>4.数组元素的排序算法</p>
+<hr>
+<p><strong>基本数据类型、包装类、String类型之间的转换</strong>  P307</p>
+<p><img src="/2022/10/14/Java%E8%AE%B0%E5%BD%9502/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E7%B1%BB%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2.jpg"></p>
+<p>简易版：</p>
+<p>基本数据类型&lt;—&gt;包装类：JDK5.0新特性，自动装箱与自动拆箱</p>
+<p>基本数据类型、包装类—&gt;String：调用String重载的valueOf（XXX xxx）(X为类名)</p>
+<p>String —&gt;基本数据类型、包装类：调用包装类的parseXxx（String s） </p>
+<p>注意：转换时可能会报NumberFormatException异常</p>
+<p><strong>为什么使用向下转型？</strong></p>
+<p>有了对象的多态性以后，内存中实际上是加载了子类特有的属性和方法，但是由于变量声明为父类类型，导致编译时，只能调用父类中声明的属性和方法。子类特有的属性和方法不能调用。如何才能调用子类特有的属性和方法?  使用向下转型-&gt;强制类型转换符 （） 。</p>
+<p><strong>注</strong>：(1)使用强转时，可能会出现ClassCastException的异常,避免方法，在向下转型前先进行instanceof的判断，返回true时才进行向下转型；</p>
+<p>a instanceof A:判断对象a是否是类A的实例；是则返回true；要求a所属的类与类A必须是子类和父类的关系，否则编译错误； </p>
+<p>包装类的应用场景举例：Vector类中关于添加元素，只定义了形参为Object类的方法，此时添加数据时需要将基本数据类型转换为包装类，再使用多态性配合addElement方法实现添加数据</p>
+<p>main()方法的使用说明：</p>
+<p>1.main()方法作为程序的入口</p>
+<p>2.main()方法也是一个普通的静态方法</p>
+<p>3.main()方法可以作为我们与控制台交互的方式（之前使用Scanner）</p>
+<p><strong>代码块</strong> </p>
+<p>作用：用来初始化类、对象；代码块只能使用static修饰；分为静态代码块与非静态代码块；</p>
+<p><img src="/2022/10/14/Java%E8%AE%B0%E5%BD%9502/%E4%BB%A3%E7%A0%81%E5%9D%972.jpg"></p>
+<p><strong>赋值语句</strong>是显示初始化先执行还是代码块先执行，看谁写在前面。写在后面的会覆盖前面的赋值。</p>
+<p>final给常量形参赋值后，只能在方法体内使用此形参，不能再重新赋值。</p>
+<p>abstract使用注意：① 不能够用来修饰属性、构造器等结构②不能用来修饰私有方法、静态方法、final方法、final的类；</p>
+<p><strong>接口</strong>注意事项：①接口中定义的静态方法，只能通过接口来调用。</p>
+<p>②通过实现类的对象，可以调用接口中定义的默认方法，如果实现类重写了此方法，则调用的是重写之后的方法。</p>
+<p>③如果子类(或实现类)继承的父类和实现的接口中声明了同名同参数的默认方法，那么子类在没有重写此方法的情况下，默认调用的是父类中的同名同参数的方法。–&gt;类优先原则。</p>
+<p>④如果实现类实现了多个接口，而这多个接口中定义了同名同参数的默认方法，此时实现类需要重写此方法，否则报错–&gt;接口冲突。</p>
+<p>⑤在子类（实现类）中调用父类&#x2F;接口中的方法：</p>
+<p>父类：super.方法名()；</p>
+<p>接口：对应接口名.super.方法名()；</p>
+<p><strong>在局部内部类的方法中，如果调用局部内部类所声明的方法中的局部变量，要求此变量声明为final的</strong>jdk8.0及之后的版本可直接省略；</p>
+<p>如何自定义异常类：①继承现有的异常结构，RuntimeException…；②提供全局常量serialVersionUID；③提供重载的构造器；</p>
+<p>子类重写的方法抛出的异常应该不大于父类抛出的异常；</p>
+<p>一般都是将编译异常抛出至最上层类，然后最上层类使用try-catch-finally抓捕异常；运行异常则需要修改代码解决问题；</p>
  
       <!-- reward -->
       
