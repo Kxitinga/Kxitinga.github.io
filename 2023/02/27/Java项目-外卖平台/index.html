@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">338</span>
+            <span class="post-count">336</span>
         </span>
     </span>
 
@@ -96,13 +96,16 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p> 项目整体介绍</p>
+  <h4>项目概述<h4>
+
 <p>第一步导入pom依赖文件和application.yml配置文件，其中注意数据库的配置信息正确。</p>
 <p>配置文件application.yml中如下属性为自动将数据表中的下划线命名转换为驼峰命名。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map-underscore-to-camel-<span class="keyword">case</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
@@ -114,7 +117,7 @@
 <p>第四步，完善登录操作，防止输入网址不登录就进入后台，造成后台不安全。</p>
 <p>①创建自定义过滤器LoginCheckFilter；②在启动类上加入注解@ServletComponentScan；③完善过滤器的处理逻辑；</p>
 <p>过滤器的处理逻辑：1.获取本次请求的URI；2.判断本次请求是否需要处理；3.如果不需要处理，则直接放行；4.判断登录状态，如果已登录，则直接放行；5.如果未登录则返回未登录结果,通过输出流的方式向客户端响应数据；将NOTLOGIN传入客户端中msg后  request.js中语句判断，再进行页面跳转</p>
- 
+</h4></h4> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -196,6 +199,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Java项目-外卖平台2
+          
+        </div>
+      </a>
     
     
       <a href="/2023/01/18/JavaScript/" class="article-nav-link">
