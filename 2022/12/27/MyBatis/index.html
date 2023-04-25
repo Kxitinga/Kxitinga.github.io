@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>MyBatis |  Hexo</title>
+      <title> Hexo</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -60,27 +60,17 @@
   data-scroll-reveal
 >
   <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  MyBatis
-</h1>
- 
-
-      
-    </header>
      
     <div class="article-meta">
       <a href="/2022/12/27/MyBatis/" class="article-date">
-  <time datetime="2022-12-27T10:25:23.000Z" itemprop="datePublished">2022-12-27</time>
+  <time datetime="2022-12-27T10:25:23.091Z" itemprop="datePublished">2022-12-27</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1k</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -96,23 +86,37 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p> 简介</p>
+  <p>title: MyBatis<br>date: 2022-12-27 18:25:23<br>tags: MySQL</p>
+<p> <strong>简介</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E7%AE%80%E4%BB%8B.jpg" alt="1"></p>
+<p><strong>执行步骤</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E6%AD%A5%E9%AA%A4.jpg" alt="步骤"></p>
 <p>在IDEA中配置MySQL数据库连接，能够识别表信息，解决SQL映射文件的警告提示；</p>
 <p>在IDEA中执行的修改需要手动同步到数据库，否则无法在数据库中查询到变动；</p>
 <p><strong>Mapper代理</strong>：</p>
+<p><strong>理解：</strong>定义mapper接口，mapper.xml文件中对应的sql语句的id与接口中的方法名一致，随后在实体类的方法体中定义调用mapper接口中的方法，以此来调用sql语句</p>
+<p><img src="/2022/12/27/MyBatis/%E7%94%A8mapper%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB.jpg" alt="用mapper代理的区别"></p>
+<p><img src="/2022/12/27/MyBatis/Mapper%E4%BB%A3%E7%90%86.jpg" alt="Mapper代理"></p>
 <p>①通过包扫描直接加载mapper文件夹下所有的映射文件；</p>
-<p>②IDEA中创建文件产生层级关系，每层之间用   &#x2F;  ；</p>
+<p>②IDEA的resources文件下创建文件产生层级关系，每层之间用   &#x2F;  ；一般可直接用点 “.”  来产生层级关系；    </p>
 <p><strong>MyBatis配置文件</strong></p>
-<p><strong>environments：</strong>配置数据库连接环境信息，可以配置多个environment，通过default属性切换不同的environment；id则为environment唯一标识符</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">![参数传递](C:\Users\DELL\Desktop\KBlog\blog\source\_posts\MyBatis\参数传递.jpg)数据库中列的名称(字段名称)与实体类的属性名称不一样，不能自动封装数据</span><br><span class="line">(1)起别名：在sql语句中使用as将字段名称与实体类的属性名保持一致；</span><br><span class="line">    缺点：每次查询都要起别名</span><br><span class="line">(2)上一点的改进：使用sql片段</span><br><span class="line">    &lt;sql id=&quot;concloud&quot;&gt;</span><br><span class="line">    brand_name as brandName,...</span><br><span class="line">    &lt;/sql&gt;</span><br><span class="line">    之后在sql语句位置</span><br><span class="line">    &lt;include refid=&quot;concloud&quot;&gt;&lt;/include&gt;</span><br><span class="line">    缺点：不灵活</span><br><span class="line">(3)最常用</span><br><span class="line">    resultMap:  id:唯一标识      type：映射的类型，支持别名</span><br><span class="line">    内设id标签和result标签</span><br><span class="line">    id完成逐渐字段的映射，result完成一般字段的映射</span><br><span class="line">    column属性值为数据库的字段名称，property对应实体类的属性名称</span><br><span class="line">    在select标签中使用resultMap=&quot;(对应id名)&quot;替换resultType属性</span><br></pre></td></tr></table></figure>
+<p><strong>environments：</strong>配置数据库连接环境信息，可以配置多个environment，通过default属性切换不同的environment；id则为environment唯一标识符;</p>
+<p>typeAliases 类型别名</p>
+<p>数据库中列的名称(字段名称)与实体类的属性名称不一样，不能自动封装数据，解决办法：</p>
+<p>①起别名，让别名和实体类的别名一致； </p>
+<h4>配置文件完成增删改查</h4>
 
-<p><strong>查询指定id</strong></p>
+<p><strong>查询所有数据</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE.jpg" alt="查询所有数据"></p>
+<p><strong>查询指定id，根据id返回指定信息</strong></p>
 <p>参数占位符：1. #{}：被替换为   ？   可防止SQL注入；多在参数传递的时候用；</p>
 <p>​                       2. ${} :   直接传值     存在SQL注入问题；当表名或列名不固定时用于传递表名或列名；   </p>
 <p>参数类型：在select标签中插入parameterType属性，可以规定参数类型，一般省略，因为实体类中已经定义了参数类型；</p>
@@ -121,9 +125,20 @@
 <p><strong>多条件查询</strong></p>
 <p>静态查询的参数传递</p>
 <p><img src="/2022/12/27/MyBatis/%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92.jpg" alt="参数传递"></p>
-<p><strong>多条件动态查询</strong><br>if:用于对查询值得条件判断<br>test：填写逻辑表达式<br>问题：当输入值个数不满足时，SQL语句中的and造成报错<br>解决：法一 ：where语句后加入恒等式，每个判断语句前加上and统一格式<br>            法二：使用<where>标签替换where，自动识别并去除SQl语句中的and；</where></p>
-<p><strong>单条件动态查询</strong>：使用choose标签<br>choose相当于Java中switch–&gt;<!--when相当于case--><br>otherwise是当when都不满足(即用户无输入)时，设置恒等式1&#x3D;1防止报错，<br>同时也可以直接用<where>标签将choose标签包裹起来，实现无输入时查询语句的where不会显示，<br>此时查询表中所有内容；</where></p>
-<p><strong>MyBatis</strong>参数封装：</p>
+<p><strong>多条件动态查询</strong>：主要应对多个查询值时，可能有的值(用户不填写)为空的情况<br>if:用于对查询值得条件判断<br>test：填写逻辑表达式<br>问题：当输入值个数不满足时，SQL语句中的and造成报错<br>解决：法一 ：where语句后加入恒等式，每个判断语句前加上and统一格式<br>            法二：使用<where>标签替换where，自动识别并去除SQl语句中的and；</where></p>
+<p><strong>单条件动态查询</strong>：根据用户所选择的类别进行单条件查询</p>
+<p>使用choose标签<br>choose相当于Java中switch–&gt;<!--when相当于case--><br>otherwise是当when都不满足(即用户无输入)时，设置恒等式1&#x3D;1防止报错，<br>同时也可以直接用<where>标签将choose标签包裹起来，实现无输入时查询语句的where不会显示，<br>此时查询表中所有内容；</where></p>
+<p><strong>添加</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E6%B7%BB%E5%8A%A0.jpg" alt="添加"></p>
+<img src="/2022/12/27/MyBatis/主键返回.jpg" alt="主键返回" style="zoom:80%;">
+
+<p>使用useGeneratedKeys&#x3D;“true” keyProperty&#x3D;“id”(参数填主键名)  添加对应参数后返回其主键id值，</p>
+<p><strong>修改</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E4%BF%AE%E6%94%B9%E5%8A%A8%E6%80%81%E5%AD%97%E6%AE%B5.jpg" alt="修改动态字段"></p>
+<p><strong>删除</strong></p>
+<p><img src="/2022/12/27/MyBatis/%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4.jpg" alt="批量删除"></p>
+<p>separator代表分隔符</p>
+<p><strong>MyBatis参数封装：</strong></p>
 <p>单个参数：POJO类型，直接使用，属性名 和 参数占位符名称 一致；</p>
 <p>​                    Map集合，直接使用，键名 和 参数占位符名称  一致；</p>
 <p>​                    Collection  封装为Map集合，可以使用@Param注解，替换Map集合中默认的arg键名；</p>
@@ -139,9 +154,9 @@
 <p>​                    其他类型 直接使用 ；</p>
 <p>多个参数：封装为Map集合，可以使用@Param注解，替换Map集合中默认的arg键名 </p>
 <p>​                map.put(“arg0”,参数值1)</p>
-<p>​                map.put(“param1”,参数值1)</p>
+<p>​                map.put(“param1”,参数值1)          （arg0和param1都代表的同一个参数）</p>
 <p>​                map.put(“arg1”,参数值2)</p>
-<p>​                map.put(“param2”,参数值1)</p>
+<p>​                map.put(“param2”,参数值1)          （arg1和param2都代表的同一个参数）</p>
 <p><strong>建议:将来都使用@Param注解来修改Map集合中默认的键名，并使用修改后的名称来获取值,这样可读性更高!</strong></p>
 <p><img src="/2022/12/27/MyBatis/%E6%B3%A8%E8%A7%A3%E5%AE%8C%E6%88%90%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.jpg"></p>
  
@@ -219,8 +234,6 @@
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
-
     </footer>
   </div>
 

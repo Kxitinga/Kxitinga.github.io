@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">350</span>
         </span>
     </span>
 
@@ -102,7 +102,23 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p><strong>概述</strong></p>
+<p>1.轻量级开源的JavaEE框架；</p>
+<p>2.可以降低企业应用开发的复杂性；</p>
+<p>3.两个核心部分：IOC(控制反转，把创建对象过程交给Spring进行管理)和Aop(面向切面，不修改源代码进行功能增强)；</p>
+<p>4.特点：①方便解耦，简化开发；②Aop编程支持；③方便程序测试；④方便和其他框架进行整合；⑤方便进行事务操作；⑥降低API开发难度；</p>
+<p><strong>IOC容器</strong></p>
+<p>底层原理：xml解析；工厂模式；反射；</p>
+<p><img src="/2023/04/06/Spring/IOC%E8%BF%87%E7%A8%8B.jpg" alt="IOC过程"></p>
+<p>IOC(接口)</p>
+<p>1.IOC思想基于IOC容器完成，IOC容器底层就是对象工厂</p>
+<p>2.Spring提供IOC容器实现两种方式：（两个接口）</p>
+<p>（1）BeanFactory：IOC容器基本实现，是Spring内部的使用接口，不提供开发人员使用，加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象。</p>
+<p>（2）ApplicationContext：BeanFactory接口的子接口，提供更多更强大的功能，一般由开发人员进行使用，加载配置文件时就不把在配置文件中的对象进行创建。</p>
+<p>3.ApplicationContext接口有实现类</p>
+<p>其中FileSystemXmlApplicationContext通过绝对路径寻找配置文件；ClassPathXmlApplicationContext在所有的类路径（包含JAR文件） 下查找xml文件；</p>
+<p><strong>DI</strong>在IoC容器中建立bean与bean之间的依赖关系的整个过程，成为依赖注入；</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -177,6 +193,8 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
     </footer>
   </div>
 
