@@ -195,10 +195,11 @@
 <p>（1）BeanFactory：IOC容器基本实现，是Spring内部的使用接口，不提供开发人员使用，加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象。</p>
 <p>（2）ApplicationContext：BeanFactory接口的子接口，提供更多更强大的功能，一般由开发人员进行使用，加载配置文件时就不把在配置文件中的对象进行创建。</p>
 <p>3.ApplicationContext接口有实现类</p>
-<p>其中FileSystemXmlApplicationContext通过绝对路径寻找配置文件；ClassPathXmlApplicationContext在所有的类路径（包含JAR文件） 下查找xml文件；</p>
+<p>其中FileSystemXmlApplicationContext通过绝对路径寻找配置文件；ClassPathXmlApplicationContext在类路径（包含JAR文件） 下查找xml文件；</p>
 <p><strong>DI</strong>在IoC容器中建立bean与bean之间的依赖关系的整个过程，成为依赖注入；</p>
 <p><img src="/2023/04/06/Spring/IoC%E5%85%A5%E9%97%A8%E6%B5%81%E7%A8%8B.jpg" alt="IoC入门流程">![依赖注入 入门流程](.&#x2F;Spring&#x2F;依赖注入 入门流程.jpg)</p>
 <hr>
+<p><img src="/2023/04/06/Spring/bean%E7%9B%B8%E5%85%B3.jpg" alt="bean相关"></p>
 <p><strong>bean</strong>参数配置：①配置bean的依赖关系property时，也可在name中写上对应bean的name属性，同一个bean中可以有多个name(bean的别名，空格隔开)；②spring默认创建的是单例模式的bean对象，scope&#x3D;”prototype”时，创建的是非单例(原型)；</p>
 <p><strong>spring为什么默认bean单例</strong>：提高性能①减少了新生成实例的消耗；②减少了jvm垃圾回收；③快速获取对象存储在一个map中，当有请求时，先在缓存中（map）查找是否存在，存在则使用，不存在才实例化一个对象<strong>缺点：</strong>①并发环境下无法做到线程安全；②原型bean在不被单例依赖时则不会出现线程安全；</p>
 <p><img src="/2023/04/06/Spring/bean.jpg" alt="bean"></p>
@@ -215,11 +216,25 @@
 <p><img src="/2023/04/06/Spring/Bean%E9%94%80%E6%AF%81%E6%97%B6%E6%9C%BA.jpg" alt="Bean销毁时机"></p>
 <hr>
 <p><strong>依赖注入方式</strong></p>
+<p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9B%B8%E5%85%B3.jpg" alt="依赖注入相关"></p>
 <p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-setter%E6%B3%A8%E5%85%A5.jpg" alt="依赖注入-setter注入"></p>
 <p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.jpg" alt="依赖注入-构造器注入"></p>
 <p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5-%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5-%E5%8F%82%E6%95%B0%E9%80%82%E9%85%8D.jpg" alt="依赖注入-构造器注入-参数适配"></p>
 <p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F%E9%80%89%E6%8B%A9.jpg" alt="依赖注入方式选择"></p>
+<p><img src="/2023/04/06/Spring/%E4%BE%9D%E8%B5%96%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%89%B9%E5%BE%81.jpg" alt="依赖自动装配特征"></p>
 <hr>
+<p><strong>集合注入</strong></p>
+<p>array&#x2F;list&#x2F;set格式一致，其中array与list一般能混用</p>
+<p><img src="/2023/04/06/Spring/%E6%95%B0%E7%BB%84%E6%B3%A8%E5%85%A5%E6%A0%BC%E5%BC%8F.jpg" alt="数组注入格式"></p>
+<p><img src="/2023/04/06/Spring/map%E3%80%81properties%E6%B3%A8%E5%85%A5.jpg" alt="map、properties注入"></p>
+<p>在pom.xml文件中导入druid坐标，来<strong>管理第三方资源配置</strong>(给第三方数据资源注入数据)</p>
+<p><strong>加载properties文件</strong></p>
+<p><img src="/2023/04/06/Spring/%E5%8A%A0%E8%BD%BDproperties%E6%96%87%E4%BB%B6%E6%AD%A5%E9%AA%A4.jpg" alt="加载properties文件步骤"></p>
+<p><img src="/2023/04/06/Spring/%E6%A0%B9%E6%8D%AE%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E4%BF%AE%E6%94%B9context%E9%85%8D%E7%BD%AE.jpg" alt="根据使用情况修改context配置"></p>
+<hr>
+<p><strong>容器</strong></p>
+<p>使用BeanFactory创建完毕容器后，所有的bean均为延迟加载，若使用ApplicationContext创建容器，在bean中添加lazy-init&#x3D;“true”属性,也可实现延迟加载。</p>
+<p><img src="/2023/04/06/Spring/%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="容器类层次结构"></p>
  
       <!-- reward -->
       
