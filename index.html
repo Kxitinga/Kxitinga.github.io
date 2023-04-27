@@ -235,6 +235,24 @@
 <p><strong>容器</strong></p>
 <p>使用BeanFactory创建完毕容器后，所有的bean均为延迟加载，若使用ApplicationContext创建容器，在bean中添加lazy-init&#x3D;“true”属性,也可实现延迟加载。</p>
 <p><img src="/2023/04/06/Spring/%E5%AE%B9%E5%99%A8%E7%B1%BB%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt="容器类层次结构"></p>
+<hr>
+<p><strong>注解开发</strong></p>
+<p>Component后填的是bean的id</p>
+<p><img src="/2023/04/06/Spring/%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91%E5%AE%9A%E4%B9%89bean.jpg" alt="注解开发定义bean"></p>
+<p>Component注解的衍生注解：@Controller：用于表现层bean定义；@Service：用于业务层bean定义；@Repository：用于数据层bean定义；Component此后多用于工具类</p>
+<p><strong>纯注解开发</strong></p>
+<p><img src="/2023/04/06/Spring/%E7%BA%AF%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91.jpg" alt="纯注解开发"><img src="/2023/04/06/Spring/%E7%BA%AF%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%912.jpg" alt="纯注解开发2"></p>
+<p>注解控制单例&#x2F;非单例模式@Scope(“singleton”) 单例模式 &#x2F;prototype非单例模式；</p>
+<p>注解控制生命周期  @PostConstruct 调用init()方法；@PreDestory 销毁(关闭容器)</p>
+<p><strong>引入类型注入 @Autowired</strong></p>
+<p>存在相同类型的不同名称的bean，使用@Qualifier设置指定注入，必须配合 @Autowired使用；</p>
+<p><strong>自动装配基于反射设计创建对象并暴力反射对应属性为私有属性初始化数据，因此无需提供setter方法</strong><br><strong>自动装配建议使用无参构造方法创建对象（默认），如果不提供对应构造方法，请提供唯一的构造方法</strong></p>
+<p><strong>简单类型注入@Value</strong>，主要作用：配合@PropertySource(“{properties文件名}”)实现外部properties文件注入，此时对应@Value(“${参数名}”)，<strong>properties文件名</strong>处不支持通配符</p>
+<p>第三方bean管理：@Bean</p>
+<p><img src="/2023/04/06/Spring/%E7%AC%AC%E4%B8%89%E6%96%B9bean%E7%AE%A1%E7%90%86.jpg" alt="第三方bean管理"></p>
+<p>第三方bean依赖注入：简单类型——成员变量；引用类型——方法形参(按类型检测，自动装配）</p>
+<p><img src="/2023/04/06/Spring/%E7%AC%AC%E4%B8%89%E6%96%B9bean%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5.jpg" alt="第三方bean依赖注入"></p>
+<p><img src="/2023/04/06/Spring/XML%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AE%E6%AF%94%E8%BE%83.jpg" alt="XML配置与注解配置比较"></p>
  
       <!-- reward -->
       
