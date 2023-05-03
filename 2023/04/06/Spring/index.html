@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">1.4k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -174,6 +174,32 @@
 <p>第三方bean依赖注入：简单类型——成员变量；引用类型——方法形参(按类型检测，自动装配）</p>
 <p><img src="/2023/04/06/Spring/%E7%AC%AC%E4%B8%89%E6%96%B9bean%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5.jpg" alt="第三方bean依赖注入"></p>
 <p><img src="/2023/04/06/Spring/XML%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%B3%A8%E8%A7%A3%E9%85%8D%E7%BD%AE%E6%AF%94%E8%BE%83.jpg" alt="XML配置与注解配置比较"></p>
+<p><strong>Spring整合Bean</strong></p>
+<p><img src="/2023/04/06/Spring/Spring%E6%95%B4%E5%90%88MyBatis1.jpg" alt="Spring整合MyBatis1"></p>
+<p><img src="/2023/04/06/Spring/Spring%E6%95%B4%E5%90%88MyBatis2.jpg" alt="Spring整合MyBatis2"></p>
+<p><strong>Spring整合JUnit</strong></p>
+<p><img src="/2023/04/06/Spring/Spring%E6%95%B4%E5%90%88JUnit.jpg" alt="Spring整合JUnit"></p>
+<hr>
+<p><strong>AOP</strong></p>
+<p>实现步骤(注解版)：①导入坐标aspectjweaver；②定义dao接口与实现类；③定义通知类，制作通知；④定义切入点，切入点定义依托一个不具有实际意义的方法进行，即无参数，无返回值，方法体无实际逻辑；；⑤绑定切入点与通知关系，并指定通知添加到原始连接点的具体执行<strong>位置</strong>；⑥定义通知类收Spring容器管理，并定义当前类为切面类；⑦开启Spring对AOP注解驱动支持；</p>
+<p><img src="/2023/04/06/Spring/AOP%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4.jpg" alt="AOP关键步骤"></p>
+<p>AOP工作流程：</p>
+<p><img src="/2023/04/06/Spring/AOP%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.jpg" alt="AOP工作流程"></p>
+<p>AOP切入点表达式：</p>
+<p>描述方式：可定位到接口中的方法，也可定位到实现类中的方法；</p>
+<p><img src="/2023/04/06/Spring/%E5%88%87%E5%85%A5%E7%82%B9%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%BF%AB%E9%80%9F%E6%8F%8F%E8%BF%B0.jpg" alt="切入点表达式-快速描述"></p>
+<p><img src="/2023/04/06/Spring/AOP%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B9%A6%E5%86%99%E6%8A%80%E5%B7%A7.jpg" alt="AOP表达式书写技巧"></p>
+<p><strong>AOP通知类型</strong>：before&#x2F;after&#x2F;Around&#x2F;AfterThrowing&#x2F;AfterReturning</p>
+<p><img src="/2023/04/06/Spring/Around%E9%80%9A%E7%9F%A5%E7%B1%BB%E5%9E%8B.jpg" alt="Around通知类型"></p>
+<p>pjp.proceed()类似于执行set方法，让目标方法执行；</p>
+<p>通知方法中的形参如果有切入点JoinPoint类型参数，则必须为第一个参数，没有则参数顺序不影响运行；</p>
+<p>AOP通知获取参数数据：</p>
+<p><img src="/2023/04/06/Spring/AOP%E9%80%9A%E7%9F%A5%E8%8E%B7%E5%8F%96%E5%8F%82%E6%95%B0%E6%95%B0%E6%8D%AE.jpg" alt="AOP通知获取参数数据"></p>
+<p>AOP通知获取返回值</p>
+<p><img src="/2023/04/06/Spring/AOP%E9%80%9A%E7%9F%A5%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E5%80%BC.jpg" alt="AOP通知获取返回值"></p>
+<p>AOP通知获取异常</p>
+<p><img src="/2023/04/06/Spring/AOP%E9%80%9A%E7%9F%A5%E8%8E%B7%E5%8F%96%E5%BC%82%E5%B8%B8.jpg" alt="AOP通知获取异常"></p>
+<p>案例：登录密码数据兼容处理—除去用户输密码中的空格，先获取参数数据，对应每个字符删除空格后再传入方法中。</p>
  
       <!-- reward -->
       
