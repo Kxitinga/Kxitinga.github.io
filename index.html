@@ -154,6 +154,53 @@
     
     
     <article
+  id="post-SpringMVC"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/05/03/SpringMVC/"
+    >SpringMVC</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/03/SpringMVC/" class="article-date">
+  <time datetime="2023-05-03T12:41:10.000Z" itemprop="datePublished">2023-05-03</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Spring"
   class="article article-type-post"
   itemscope
@@ -279,6 +326,17 @@
 <p>AOP通知获取异常</p>
 <p><img src="/2023/04/06/Spring/AOP%E9%80%9A%E7%9F%A5%E8%8E%B7%E5%8F%96%E5%BC%82%E5%B8%B8.jpg" alt="AOP通知获取异常"></p>
 <p>案例：登录密码数据兼容处理—除去用户输密码中的空格，先获取参数数据，对应每个字符删除空格后再传入方法中。</p>
+<hr>
+<p><strong>Spring事务</strong></p>
+<p>  步骤：①业务层接口添加Spring事务管理 @Transactional ；(注解式业务可以添加到业务方法上表示当前方法开启业务，也可添加到接口上表示当前接口所有方法开启事务，添加到接口上降低耦合)②设置事务管理器，MyBatis框架使用的是JDBC事务；<img src="/2023/04/06/Spring/%E6%B3%A8%E8%A7%A3%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8.jpg" alt="注解式事务管理器"></p>
+<p>③开启注解式事务驱动@EnableTransactionManagement；</p>
+<p><strong>Spring事务角色：</strong></p>
+<p>事务管理员：发起事务方，在Spring中通常指代业务层开启事务的方法</p>
+<p>事务协调员：加入事务方，在Spring中通常指代数据层方法，也可以是业务层方法。即将操作行为一起加入到事务中。</p>
+<p><strong>事务相关配置</strong></p>
+<p><img src="/2023/04/06/Spring/%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE.jpg" alt="事务相关配置"></p>
+<p><strong>事务传播行为</strong></p>
+<p><img src="/2023/04/06/Spring/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA.jpg" alt="事务传播行为"></p>
  
       <!-- reward -->
       
@@ -767,59 +825,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-HTML"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/01/13/HTML/"
-    >HTML</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/01/13/HTML/" class="article-date">
-  <time datetime="2023-01-13T12:45:21.000Z" itemprop="datePublished">2023-01-13</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p> html笔记</p>
-<p><strong>请求方式get&#x2F;post区别</strong></p>
-<p>get：默认值；请求参数回拼接在URL后，URL长度限制为4KB，即请求参数长度有限制；</p>
-<p>post：请求参数会封装在http请求协议的请求体中，但请求参数长度无限制；</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/" rel="tag">html</a></li></ul>
 
     </footer>
   </div>

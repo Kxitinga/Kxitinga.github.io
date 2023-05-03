@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.4k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -200,6 +200,17 @@
 <p>AOP通知获取异常</p>
 <p><img src="/2023/04/06/Spring/AOP%E9%80%9A%E7%9F%A5%E8%8E%B7%E5%8F%96%E5%BC%82%E5%B8%B8.jpg" alt="AOP通知获取异常"></p>
 <p>案例：登录密码数据兼容处理—除去用户输密码中的空格，先获取参数数据，对应每个字符删除空格后再传入方法中。</p>
+<hr>
+<p><strong>Spring事务</strong></p>
+<p>  步骤：①业务层接口添加Spring事务管理 @Transactional ；(注解式业务可以添加到业务方法上表示当前方法开启业务，也可添加到接口上表示当前接口所有方法开启事务，添加到接口上降低耦合)②设置事务管理器，MyBatis框架使用的是JDBC事务；<img src="/2023/04/06/Spring/%E6%B3%A8%E8%A7%A3%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8.jpg" alt="注解式事务管理器"></p>
+<p>③开启注解式事务驱动@EnableTransactionManagement；</p>
+<p><strong>Spring事务角色：</strong></p>
+<p>事务管理员：发起事务方，在Spring中通常指代业务层开启事务的方法</p>
+<p>事务协调员：加入事务方，在Spring中通常指代数据层方法，也可以是业务层方法。即将操作行为一起加入到事务中。</p>
+<p><strong>事务相关配置</strong></p>
+<p><img src="/2023/04/06/Spring/%E4%BA%8B%E5%8A%A1%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE.jpg" alt="事务相关配置"></p>
+<p><strong>事务传播行为</strong></p>
+<p><img src="/2023/04/06/Spring/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E8%A1%8C%E4%B8%BA.jpg" alt="事务传播行为"></p>
  
       <!-- reward -->
       
@@ -282,6 +293,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/05/03/SpringMVC/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            SpringMVC
+          
+        </div>
+      </a>
     
     
       <a href="/2023/03/13/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B06/" class="article-nav-link">

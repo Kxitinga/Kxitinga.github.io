@@ -154,6 +154,68 @@
     
     
     <article
+  id="post-Java记录01"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/10/09/Java%E8%AE%B0%E5%BD%9501/"
+    >Java记录01</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/10/09/Java%E8%AE%B0%E5%BD%9501/" class="article-date">
+  <time datetime="2022-10-09T13:36:43.000Z" itemprop="datePublished">2022-10-09</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Java记录"><a href="#Java记录" class="headerlink" title="Java记录"></a>Java记录</h1><h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><p><strong>自动类型提升：</strong></p>
+<p>当容量小的数据类型的变量与容量大的数据类型的变量做运算时，结果自动提升为容量大的数据类型。byte、char、short –&gt; int –&gt; long –&gt; float –&gt; double</p>
+<p>特别的:当byte、char、short三种类型的变量做运算时,结果为int型</p>
+<p><strong>强制类型转换：</strong>自动类型提升的逆运算(将容量小的转换为容量大的),可能会导致精度损失</p>
+<p>使用强转符：例 将short 型转换为int 型         int i1&#x3D;(int) s1;</p>
+<h2 id="字符串类型String"><a href="#字符串类型String" class="headerlink" title="字符串类型String"></a>字符串类型String</h2><p>String可以和8种基本数据类型变量做运算，且运算只能是连接运算，运算结果仍然是String类型；</p>
+<p>单引号’’内装char类型(内部只能写一个)，双引号””内装String类型，加号+对于char类型是做运算，对于String类型是做连接</p>
+<p>String str1&#x3D;123+””;     int str2&#x3D;123;     虽然输出显示一样，但str1和str2不是一个类型；</p>
+<p><img src="/2022/10/09/Java%E8%AE%B0%E5%BD%9501/001.png" alt="标识符规则"></p>
+<p><img src="/2022/10/09/Java%E8%AE%B0%E5%BD%9501/002.png" alt="命名规范"></p>
+<p>变量声明：先声明再赋值，只能在作用域内使用，同一个作用域内不能有两个同名的变量</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>只有单目运算符、三元运算符、赋值运算符是从右向左运算的。</p>
+<p>优先级由高到低</p>
+<p><img src="/2022/10/09/Java%E8%AE%B0%E5%BD%9501/003.png" alt="运算符优先级"></p>
+<p>break，结束当前循环；continue，结束当次循环。两者后面都不能声明执行语句。(默认跳出最近一层，但也可以对在特定层数循环语句前加上标签，跳出指定层的循环)</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-linux"
   class="article article-type-post"
   itemscope
