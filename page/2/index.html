@@ -154,6 +154,194 @@
     
     
     <article
+  id="post-Java项目-外卖平台2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/"
+    >Java项目-外卖平台2</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/" class="article-date">
+  <time datetime="2023-03-01T12:13:19.000Z" itemprop="datePublished">2023-03-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3>员工管理业务开发<h3>
+
+<p><strong>添加员工信息</strong>整个程序的执行过程</p>
+<p>①页面发送ajax请求，将新增员工页面中输入的数据以json的形式提交到服务端；</p>
+<p>②服务端Controller接收页面提交的数据并调用Service将数据进行保存；</p>
+<p>③Service调用Mapper操作数据库，保存数据；</p>
+<p>注：在添加员工信息时，当添加的账号名已经存在于数据库中时，因为username的唯一约束，会导致数据库抛出异常，此时需要我们进行异常捕获，通常有两种处理方式：</p>
+<p>①在Controller方法中加入try、catch进行异常捕获</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    employeeService.save(employee)</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">    R.error(<span class="string">&quot;新增员工失败&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> R.success(<span class="string">&quot;新增员工成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>缺点：当注册的账户很多时，进行多次判断，占用时间</p>
+<p>②使用异常处理器进行全局异常捕获</p>
+<p>整体流程</p>
+<p><img src="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/.%5CJava%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02%5C%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png" alt="数据流转过程"></p>
+<p><strong>员工信息分页查询</strong>执行流程</p>
+<p>①页面发送ajax请求，将分页查询参数(page、pageSize、name)提交到服务端；</p>
+<p>②服务端Controller接收页面提交的数据并调用Service查询数据；<br>③Service调用Mapper操作数据库，查询分页数据；<br>④Controller将查询到的分页数据响应给页面；<br>⑤页面接收到分页数据并通过ElementUl的Table组件展示到页面上。</p>
+<p><strong>启用&#x2F;禁用员工账号</strong></p>
+<p>执行修改操作时，因为用户id是long型数据，但JSON传入long型数据会丢失精度，自动将后三位四舍五入，导致JSON传到服务端的id与实际上数据库中的id不一致，修改失败，</p>
+<p><strong>解决</strong>：服务端给页面响应json数据时进行处理，将long型数据统一转化为String字符串。 </p>
+<p>具体实现步骤：①提供对象转换器JacksonObjectMapper，基于Jackson进行Java对象到json数据的转换；②在WebMvcConfig配置类中扩展Spring mvc的消息转换器，在此消息转换器中使用提供的对象转换器进行Java对象到json数据的转换。</p>
+<p><strong>编辑员工信息</strong></p>
+<p>在开发代码之前需要梳理一下操作过程和对应的程序的执行流程:<br>①点击编辑按钮时，页面跳转到add.html，并在url中携带参数[员工id]；</p>
+<p>②在add.html页面获取url中的参数[员工id]；</p>
+<p>③发送ajax请求，请求服务端，同时提交员工id参数；</p>
+<p>④服务端接收请求，根据员工id查询员工信息，将员工信息以json形式响应给页面；</p>
+<p>⑤页面接收服务端响应的json数据，通过VUE的数据绑定进行员工信息回显；</p>
+<p>⑥点击保存按钮，发送ajax请求，将页面中的员工信息以json方式提交给服务端；</p>
+<p>⑦服务端接收员工信息，并进行处理，完成后给页面响应；</p>
+<p>⑧页面接收到服务端响应信息后进行相应处理。</p>
+</h3></h3> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E9%A1%B9%E7%9B%AE/" rel="tag">Java项目</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Java项目-外卖平台"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/02/27/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/"
+    >Java项目-外卖平台</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/02/27/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B0/" class="article-date">
+  <time datetime="2023-02-27T11:46:59.000Z" itemprop="datePublished">2023-02-27</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4>项目概述<h4>
+
+<p>第一步导入pom依赖文件和application.yml配置文件，其中注意数据库的配置信息正确。</p>
+<p>配置文件application.yml中如下属性为自动将数据表中的下划线命名转换为驼峰命名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map-underscore-to-camel-<span class="keyword">case</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>第二步，将前端信息直接导入，导入的信息配置</p>
+<p>外部导入的资源只能存放在静态中，除非重新定义类指向自定义加载路径</p>
+<p>后端接口配置好之前，可先将backend中page中的js 文件的timeout调大，防止超时自动结束</p>
+<p>第三步，配置登录和退出操作</p>
+<p>第四步，完善登录操作，防止输入网址不登录就进入后台，造成后台不安全。</p>
+<p>①创建自定义过滤器LoginCheckFilter；②在启动类上加入注解@ServletComponentScan；③完善过滤器的处理逻辑；</p>
+<p>过滤器的处理逻辑：1.获取本次请求的URI；2.判断本次请求是否需要处理；3.如果不需要处理，则直接放行；4.判断登录状态，如果已登录，则直接放行；5.如果未登录则返回未登录结果,通过输出流的方式向客户端响应数据；将NOTLOGIN传入客户端中msg后  request.js中语句判断，再进行页面跳转</p>
+</h4></h4> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E9%A1%B9%E7%9B%AE/" rel="tag">Java项目</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-JavaScript"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/01/18/JavaScript/"
+    >JavaScript</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/01/18/JavaScript/" class="article-date">
+  <time datetime="2023-01-18T15:31:57.000Z" itemprop="datePublished">2023-01-18</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-CSS"
   class="article article-type-post"
   itemscope
@@ -611,216 +799,13 @@
 </article>
 
     
-    <article
-  id="post-MySQL02"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/12/21/MySQL02/"
-    >MySQL02</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/12/21/MySQL02/" class="article-date">
-  <time datetime="2022-12-21T14:23:42.000Z" itemprop="datePublished">2022-12-21</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><strong>约束</strong></p>
-<p>1.概念：约束是作用于表中列上的规则，用于限制加入表的数据</p>
-<pre><code>        约束的存在保证了数据库中数据的正确性、有效性和完整性
-</code></pre>
-<p>2.约束的分类</p>
-<p><img src="/2022/12/21/MySQL02/%E7%BA%A6%E6%9D%9F%E7%9A%84%E5%88%86%E7%B1%BB.jpg" alt="约束的分类"></p>
-<p><strong>外键约束</strong></p>
-<p><img src="/2022/12/21/MySQL02/%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F%E8%AF%AD%E6%B3%95.jpg" alt="外键约束语法"></p>
-<p>注：①当列是数字类型且有唯一约束时，使用 auto_increment 使列中数据保持自增长；</p>
-<p>​        ②MySQL不支持检查约束；</p>
-<p>​        ③ALTER TABLE  (表示多的这个表的表名 )    ADD  CONSTRAINT  (自命名外键名称，用于删除外键时使用)  FOREIGN  KEY([多]表的对应字段名,这里跟KEY之间没有空格)  REFERENCES  [一]表名称([一]表列名)；</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-typora注意事项"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/12/21/typora%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"
-    >typora注意事项</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/12/21/typora%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="article-date">
-  <time datetime="2022-12-21T05:50:04.000Z" itemprop="datePublished">2022-12-21</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p> ①标签后和段落首(行首)需要空一格；</p>
-<p> ②图片的路径只能用相对路径，使用绝对路径无法在web显示；</p>
-<p> ③图片路径中每层之间只能用”&#x2F;“，否则在笔记中能显示，但web无法识别路径而不能显示图片；</p>
-<p> ④hexo g  –生成静态文件(此时本地可查看修改);       hexo  s  –开启本地端口localhost:4000;</p>
-<p>​     hexo d  –部署静态文件至网页(更新修改至仓库，每次部署需要输入密码，完成后等待一段几分钟同步后即可在网页端查看) 凭 <a target="_blank" rel="noopener" href="https://kxitinga.github.io/">Hexo (kxitinga.github.io)</a> 链接访问网页；</p>
-<p> ⑤部署至服务器有几分钟的延时，可先通过本地端口访问查看网页布局内容是否正常；</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typora%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E8%AE%B0%E5%BD%95/" rel="tag">Typora注意事项记录</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-JavaWeb-MySQL"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/12/20/JavaWeb-MySQL/"
-    >JavaWeb-MySQL</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/12/20/JavaWeb-MySQL/" class="article-date">
-  <time datetime="2022-12-20T15:00:55.000Z" itemprop="datePublished">2022-12-20</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <hr>
-<p>MySQL的安装：5.7.24<br>登录命令：mysql -u用户名 -p密码<br>链接其他数据库命令：mysql -u用户名 -h要链接的mysql服务器的ip地址(默认127.0.0.0) -p端口号(默认3306)</p>
-<h4>MySQL基础知识<h4>
-<h5>MySQL整体框架<h5>
-
-<p><img src="/2022/12/20/JavaWeb-MySQL/MySQLstatus.jpg" alt="整体框架"></p>
-<h5>DDL操作数据库<h5>
-
-<p><img src="/2022/12/20/JavaWeb-MySQL/DDLfordatabase.jpg" alt="DDL操作数据库"></p>
-<h5>DDL修改表<h5>
-
-<p><img src="/2022/12/20/JavaWeb-MySQL/DDLfortable.jpg" alt="DDL修改表"></p>
-<h5>
-    DML：对表中的数据增删改查
-</h5>
-
-<p>增：当对所有的列增加数据时，列名的列表可以省略，但实际开发中不建议省略，因为可以便于查看列的属性；</p>
-<p>改：如果updata语句没有加where条件，则会将表中所有数据全部修改！</p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/DQLQuery.jpg" alt="查询语法"></p>
-<p><strong>基础查询</strong>：(1)查询多个字段：SELECT  字段列表  FROM  表名；字段列表为*时表示查询所有数据      </p>
-<p>​                   (2)去除重复记录：SELECT  DISTINCT  字段列表  FROM  表名；</p>
-<p>​                   (3)起别名    原列名  AS  新列名；AS可以省略但原列名和新列名之间至少有一个空格；  </p>
-<p><strong>条件查询</strong>：SELECT  字段列表  FROM  表名  WHERE  条件列表；</p>
-<p>条件用于查询特定数据时对数据的筛选</p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2.jpg" alt="条件查询"></p>
-<p><strong>分组查询</strong>：</p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2.jpg" alt="分组查询"></p>
-<p><strong>排序查询</strong></p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2.jpg" alt="排序查询"></p>
-<p><strong>分页查询</strong>：</p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2.jpg" alt="分页查询"></p>
-<p><strong>聚合函数</strong>：</p>
-<p><img src="/2022/12/20/JavaWeb-MySQL/%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0.jpg" alt="聚合函数"></p>
-<p>查：①查询所有列数据时，列表名可以使用*代替，但不建议使用；</p>
-<p>​        ②查询某几个固定字段可直接用（），如select * from 表名 where age in （18，20，22）；</p>
-<p>​        ③null值得比较不能使用&#x3D;，!&#x3D;，只能使用is 或者 is not ；</p>
-<p>​        ④模糊查询LIKE   通配符：(1)_：单表单个任意字符；(2)%：代表多个任意字符；</p>
-<p>​        ⑤null值不参与所有聚合函数的运算；</p>
-<p>​        ⑥分组查询时，where用于对参与查询的数据进行条件限制；</p>
-</h5></h5></h5></h5></h5></h5></h4></h4> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>
