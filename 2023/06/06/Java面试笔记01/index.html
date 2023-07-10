@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">318</span>
+            <span class="post-count">2.6k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">9 min</span>
         </span>
     </span>
 </div>
@@ -102,16 +102,42 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>①<strong>try-catch-finally 与try-with-resource区别：</strong></p>
+  <p><strong>【try-catch-finally 与try-with-resource区别】：</strong></p>
 <p><strong>try-with-resources</strong>：捕捉异常，同时关闭资源。<br>使用条件：try-with-resources使用是java1.7增加了新特性，只要实现了AutoCloseable 或 Closeable,在try代码块结束之前,会自动关闭资源.。而字节输入流（InputStream），字节输出流（OutputStream），字符输入流（Reader），字符输出流（Writer）均实现了这接口。</p>
 <p>不是所有的类都可以使用try-with-resource处理。实现AutoCloseable接口是使用try-with-resource的前提。在try-with-resource语句中，只有实现了AutoCloseable接口的类才会被视为资源进行相关处理。</p>
 <p><strong>try-catch-finally</strong>：没有限制条件，finally不仅可以关闭资源，还可以用于执行其他代码块；finally关闭资源不会立即关闭，取决与网络和系统，可能会很快，也可能会等一两天，不建议使用finally作为业务流程的控制；<br>try-with-resources：代码更加简洁，有限制条件，资源会立即被关闭。</p>
-<p>②<strong>泛型：</strong></p>
+<p><strong>【泛型】：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上界和下界</span></span><br><span class="line">IPage&lt;? <span class="keyword">extends</span> <span class="title class_">AppOrderResponse</span>&gt; <span class="comment">//表示泛型最高类型是 AppOrderResponse，只能是它或它的子类</span></span><br><span class="line">IPage&lt;? <span class="built_in">super</span> AppOrderResponse&gt;   <span class="comment">//表示泛型最低类型是 AppOrderResponse。只能是它或它的父类</span></span><br></pre></td></tr></table></figure>
 
-<p>③<strong>反射：</strong></p>
-<p>④<strong>注解：</strong></p>
-<p>⑤<strong>SPI和API的区别：</strong></p>
+<p><strong>【反射】：</strong></p>
+<p><strong>【注解】：</strong></p>
+<p><strong>【SPI和API的区别】：</strong></p>
+<p><strong>【——————–抽象类和接口的区别——————–】：</strong></p>
+<p>抽象类的特点：</p>
+<p>a、抽象类不能被实例化只能被继承；</p>
+<p>b、包含抽象方法的一定是抽象类，但是抽象类不一定含有抽象方法；</p>
+<p>c、抽象类中的抽象方法的修饰符只能为public或者protected，默认为public；</p>
+<p>d、一个子类继承一个抽象类，则子类必须实现父类抽象方法，否则子类也必须定义为抽象类；</p>
+<p>e、抽象类可以包含属性、方法、构造方法，但是构造方法不能用于实例化，主要用途是被子类调用。</p>
+<p>接口的特点：</p>
+<p>a、接口可以包含变量、方法；变量被隐士指定为public static final，方法被隐士指定为public abstract（JDK1.8之前）；</p>
+<p>b、接口支持多继承，即一个接口可以extends多个接口，间接的解决了Java中类的单继承问题；</p>
+<p>c、一个类可以实现多个接口；</p>
+<p>d、JDK1.8中对接口增加了新的特性：（1）、默认方法（default method）：JDK 1.8允许给接口添加非抽象的方法实现，但必须使用default关键字修饰；定义了default的方法可以不被实现子类所实现，但只能被实现子类的对象调用；如果子类实现了多个接口，并且这些接口包含一样的默认方法，则子类必须重写默认方法；（2）、静态方法（static method）：JDK 1.8中允许使用static关键字修饰一个方法，并提供实现，称为接口静态方法。接口静态方法只能通过接口调用（接口名.静态方法名）。</p>
+<p><strong>相同点</strong>（1）都不能被实例化（2）接口的实现类或抽象类的子类都只有实现了接口或抽象类中的方法后才能实例化。</p>
+<p><strong>不同点</strong>（1）接口只有定义，不能有方法的实现，java 1.8中可以定义default方法体，而抽象类可以有定义与实现，方法可在抽象类中实现。（2）实现接口的关键字为implements，继承抽象类的关键字为extends。一个类可以实现多个接口，但一个类只能继承一个抽象类。所以，使用接口可以间接地实现多重继承；（3）接口强调特定功能的实现，而抽象类强调所属关系。（4）接口成员变量默认为public static final，必须赋初值，不能被修改；其所有的成员方法都是public、abstract的。抽象类中成员变量默认default，可在子类中被重新定义，也可被重新赋值；抽象方法被abstract修饰，不能被private、static、synchronized和native等修饰，必须以分号结尾，不带花括号。</p>
+<p><strong>【——————–什么是SSM框架？有哪些组成部分？——————–】</strong></p>
+<p>Java SSM框架即指Spring+SpringMVC+MyBatis的简称，框架集由Spring、MyBatis两个开源框架整合而成（SpringMVC是Spring中的部分内容）,常作为数据源较简单的web项目的框架。相比于之前的SSH（Spring+Struts+Hibernate），SSM更加轻量化和灵活，是目前业界主流的Java Web开发框架。</p>
+<p><strong>Spring</strong><br>Spring框架是一系列应用框架的核心，是整合其他应用框架的基础。也是Spring Boot的基础，Spring框架里面包含了Spring、SpringMVC、SrpingTest等。<br><strong>Spring的优点总结：</strong><br><strong>1、非侵入式设计</strong><br>Spring是一种非侵入式(non-invasive)框架，它可以使应用程序代码对框架的依赖最小化。<br><strong>2、 方便解耦、简化开发</strong><br>Spring就是一个大工厂，可以将所有对象的创建和依赖关系的维护工作都交给Spring容器管理，大大的降低了组件之间的耦合性。<br><strong>3、支持AOP</strong><br>Spring提供了对AOP的支持，它允许将一些通用任务，如安全、事务、日志等进行集中式处理，从而提高了程序的复用性。<br><strong>4、支持声明式事务处理</strong><br>只需要通过配置就可以完成对事务的管理，而无需手动编程。<br><strong>5、方便程序的测试</strong><br>Spring提供了对Junit4的支持，可以通过注解方便的测试Spring程序。<br><strong>6、方便集成各种优秀框架</strong><br>Spring不排斥各种优秀的开源框架，其内部提供了对各种优秀框架(如：Struts、Hibernate、MyBatis、Quartz等)的直接支持。<br><strong>7、降低Java EE API的使用难度</strong><br>Spring对Java EE开发中非常难用的一些API(如：JDBC、JavaMail等)，都提供了封装，使这些API应用难度大大降低。<br><strong>Spring MVC</strong><br><strong>SpringMVC有什么优点？SpringMVC是spring框架的一个模块，是基于MVC的轻量级Web框架。Spring是目前Web开发中的一个很重要的部分。尤其在企业招聘相关开发者的时候，有大量的笔试和面试题目都与springMVC有关。</strong></p>
+<p>SpringMVC是一个典型教科书式的MVC框架，对于初学者而言是非常好的。其他优点可以概括为：<br>1、SpringMVC可以支持各种试图技术，而不仅仅局限于JSP；<br>2、与Spring框架集成（如IoC容器、AOP等）；<br>3、清晰的角色分配：前端控制器(dispatcherServlet) , 请求到处理器映射（handler<a href="https://link.zhihu.com/?target=https://www.boxuegu.com/news/423.html">M</a>apping), 处理器适配器（HandlerAdapter), 视图解析器（ViewResolver）；<br>4、支持各种请求资源的映射策略；<br><strong>SpringMVC的主要组件有什么？</strong><br>（1）前端控制器 DispatcherServlet。接收请求、响应结果，相当于转发器，有了DispatcherServlet 就减少了其它组件之间的耦合度。<br>（2）处理器映射器HandlerMapping。根据请求的URL来查找Handler。<br>（3）处理器适配器HandlerAdapter。在编写Handler的时候要按照HandlerAdapter要求的规则去编写，这样适配器HandlerAdapter才可以正确的去执行Handler。<br>（4）处理器Handler。编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler。<br>（5）视图解析器 ViewResolver。进行视图的解析，根据视图逻辑名解析成真正的视图（view）。<br>（6）视图View。View是一个接口， 它的实现类支持不同的视图类型（jsp，freemarker，pdf等等）。</p>
+<p><strong>MyBatis</strong><br>MyBatis是一个基于Java的持久层框架，所谓的持久层框架就是专门用来将数据进行持久化的框架，也就是说将数据存储到数据库中的框架。学习并掌握Mybatis，首先就要了解Mybatis的核心组件。<br>Mybatis是半自动ORM映射工具，可以自定义高效的SQL语句提升数据库访问的效率。Mybatis是半自动的原因是因为我们要在Mapper文件中手写SQL语句，全自动的ORM（如Hibernate）是不需要手写SQL的。MyBatis可以自定义高效的SQL语句提升数据库访问的效率；而且MyBatis容易掌握，而Hibernate门槛较高。所以我们用Mybatis代替传统的Hibernate。</p>
+<p><strong>【——————–String的特点——————–】</strong></p>
+<p>1、String声明为final的，不可被继承；2、实现了Serializable接口：表示字符串是支持序列化的；实现了Comparable接口：表示String可以比较大小；3、内部定义了final char []  value 用于存储字符串数据；4、String不可变性体现在：①当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值；②当对现有的字符串进行链接操作时，也需要重新指定内存区域赋值；③当调用String的replace()方法修改指定字符或字符串时，也需要重新指定内存区域赋值；5、通过字面量(String s &#x3D;’abc’)的方式给一个字符串赋值，此时的字符串值声明在字符串常量池中。6、字符串常量池中不会存储相同内容的字符串。</p>
+<p><strong>【——————–红黑树为什么删除效率高——————–】</strong></p>
+<p>①红黑树不追求”完全平衡”，即不像AVL那样要求节点的高度差&lt;&#x3D;1，它只要求部分达到平衡，但是提出了为节点增加颜色，红黑是用非严格的平衡来换取增删节点时候旋转次数的降低，任何不平衡都会在三次旋转之内解决，而AVL是严格平衡树，因此在增加或者删除节点的时候，根据不同情况，旋转的次数比红黑树要多。</p>
+<p>②插入节点时，AVL和RB-Tree都是最多两次树旋转来实现复衡rebalance，旋转的量级是O(1)</p>
+<p>③删除节点导致失衡，AVL需要维护从被删除节点到根节点root这条路径上所有节点的平衡，旋转的量级为O(logN)，而RB-Tree最多只需要旋转3次实现复衡，只需O(1)，所以说RB-Tree删除节点的rebalance的效率更高，开销更小。</p>
+<p>实际应用中，若搜索的次数远远大于插入和删除，那么选择AVL，如果搜索、插入、删除次数几乎差不多，应该选择RB。</p>
  
       <!-- reward -->
       
