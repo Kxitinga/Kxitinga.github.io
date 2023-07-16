@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1k</span>
+            <span class="post-count">1.9k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -141,6 +141,24 @@
 <p>如何自定义异常类：①继承现有的异常结构，RuntimeException…；②提供全局常量serialVersionUID；③提供重载的构造器；</p>
 <p>子类重写的方法抛出的异常应该不大于父类抛出的异常；</p>
 <p>一般都是将编译异常抛出至最上层类，然后最上层类使用try-catch-finally抓捕异常；运行异常则需要修改代码解决问题；</p>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>分为Collection和Map两种体系</p>
+<p><strong>Collection接口</strong>：单列数据，定义了存取一组对象的方法的集合。</p>
+<p>​                List：元素有序、可重复的集合。  —&gt;”动态“数组</p>
+<p>​                Set：元素无序、不可重复的集合。 —&gt;”无序、互异“</p>
+<p><strong>Map接口</strong>：双列数据，保存具有<strong>映射关系</strong>“key-value对“的集合。</p>
+<p>注：①向Collection接口中添加数据obj时，要求obj所在类重写equals()。(因为obj比较数据使用的&#x3D;&#x3D;)。</p>
+<p>集合元素的遍历操作：使用Iterator接口，结合hasNext()和next()方法，集合对象每次调用iterator()方法都得到一个全新的迭代器对象，默认游标初始位置都在集合的第一个元素之前，通过hasNext()判断下一个位置是否有元素存在，next()输出下一个位置元素；</p>
+<p><strong>Iteator删除集合元素是在遍历过程中通过迭代器对象的remove方法，而不是集合对象的remove方法；同时，如果还未调用next()或在上一次调用next方法之后已经调用了remove方法，再次调用则会报IllegalStateException。不能重复调用，也不能每次在next()之前调用</strong></p>
+<p>使用foreach循环遍历数组&#x2F;集合时，实际上是新创建了一个局部变量来获取集合&#x2F;数组中的元素值，此时在foreach循环中修改局部变量的值，不影响原集合&#x2F;数组中元素的值。<img src="/2022/10/14/Java%E8%AE%B0%E5%BD%9502/List%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.jpg" alt="List常用方法"></p>
+<p><img src="/2022/10/14/Java%E8%AE%B0%E5%BD%9502/HashSet.jpg" alt="HashSet"></p>
+<p><strong>注：①Set接口中没有额外定义新的方法，使用的都是Collection中声明过的方法；②想Set中添加的数据，其所在的类一定要重写hashCode()和equals()，且重写的hashCode()和equals()尽可能保持一致性：相等的对象必须具有相等的散列码；</strong></p>
+<p><strong>LinkedHashSet</strong>作为HashSet子类，添加数据时节点的位置是无序的(位置通过散列得来)，但节点之间以链表指针的形式链接，因此在遍历其内部数据时，可以按照添加顺序遍历，对于频繁的遍历操作，效率高于HashSet。</p>
+<p><strong>TreeSet：</strong>①可以根据对象的指定属性进行排序。因此要求TreeSet中数据是相同类的对象；②两种排序方式：自然排序(实现Comparable接口，第一个节点为根节点，后续添加的小于则放左边，大于则放右边)：比较两个对象是否相同的标准为：compareTo()返回0，不再是equals()；定制排序：比较两个对象是否相同的标准为：compare()返回0，不再是equals()；</p>
+<h3 id="Map实现类"><a href="#Map实现类" class="headerlink" title="Map实现类"></a>Map实现类</h3><p>HashMap：作为Map的主要实现类，线程不安全，效率高，存储null的key和value。(底层：数组+链表+红黑树)</p>
+<p>​        LinkedHashMap：保证在遍历map元素时，可以按照添加的顺序实现遍历。原因：在原有的HashMap底层              结构基础上，添加了指向前一个元素和后一个元素的指针，对于频繁的遍历操作，执行效率高于HashMap。</p>
+<p>TreeMap：保证按照添加的key-value对进行排序，实现排序遍历，此时考虑key的自然排序或定制排序。(红黑树)</p>
+<p>Hashtable：作为古老的实现类，线程安全，效率低，不能存储null的key和value。</p>
+<p>​        Properties：常用来处理配置文件。key和value都是String类型。<img src="/2022/10/14/Java%E8%AE%B0%E5%BD%9502/HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86(jdk7).jpg" alt="HashMap底层实现原理(jdk7)"></p>
  
       <!-- reward -->
       

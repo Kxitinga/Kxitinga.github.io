@@ -254,6 +254,12 @@
 <p>JDK 是 Java Development Kit 缩写，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
 <p>JRE 是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它不能用于创建新程序。</p>
 <p><strong>JVM 并不是只有一种！只要满足 JVM 规范，每个公司、组织或者个人都可以开发自己的专属 JVM。</strong> 也就是说我们平时接触到的 HotSpot VM 仅仅是是 JVM 规范的一种实现而已。</p>
+<p><strong>【——————–throw和throws的区别——————–】</strong></p>
+<p>throw：生成一个异常对象，并抛出，使用在方法内部。&lt;–&gt;自动抛出异常对象</p>
+<p>throws：处理异常的方式，使用在方法声明处的末尾。                                       throw抛出，throws处理</p>
+<p><strong>【——————–谈谈你对同步代码块中同步监视器和共享数据的理解及各自要求——————–】</strong></p>
+<p>同步监视器：俗称锁。①任何一个类的对象都可以充当锁。②多个线程共用同一把锁。</p>
+<p>共享数据：多个线程共同操作的数据。需要使用同步机制将操作共享数据的代码包起来。</p>
 <p><strong>【——————–什么是字节码？采用字节码的好处是什么？——————–】</strong></p>
 <p>在 Java 中，JVM 可以理解的代码就叫做字节码（即扩展名为 <code>.class</code> 的文件），它不面向任何特定的处理器，只面向虚拟机。Java 语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以， Java 程序运行时相对来说还是高效的（不过，和 C++，Rust，Go 等语言还是有一定差距的），而且，由于字节码并不针对一种特定的机器，因此，Java 程序无须重新编译便可在多种不同操作系统的计算机上运行。</p>
 <p><strong>【——————–共有变量和私有变量的区别，为什么要变量私有化——————–】</strong></p>
@@ -352,16 +358,16 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><strong>【try-catch-finally 与try-with-resource区别】：</strong></p>
+  <p><strong>【——————–try-catch-finally 与try-with-resource区别——————–】：</strong></p>
 <p><strong>try-with-resources</strong>：捕捉异常，同时关闭资源。<br>使用条件：try-with-resources使用是java1.7增加了新特性，只要实现了AutoCloseable 或 Closeable,在try代码块结束之前,会自动关闭资源.。而字节输入流（InputStream），字节输出流（OutputStream），字符输入流（Reader），字符输出流（Writer）均实现了这接口。</p>
 <p>不是所有的类都可以使用try-with-resource处理。实现AutoCloseable接口是使用try-with-resource的前提。在try-with-resource语句中，只有实现了AutoCloseable接口的类才会被视为资源进行相关处理。</p>
 <p><strong>try-catch-finally</strong>：没有限制条件，finally不仅可以关闭资源，还可以用于执行其他代码块；finally关闭资源不会立即关闭，取决与网络和系统，可能会很快，也可能会等一两天，不建议使用finally作为业务流程的控制；<br>try-with-resources：代码更加简洁，有限制条件，资源会立即被关闭。</p>
-<p><strong>【泛型】：</strong></p>
+<p><strong>【——————–泛型——————–】：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上界和下界</span></span><br><span class="line">IPage&lt;? <span class="keyword">extends</span> <span class="title class_">AppOrderResponse</span>&gt; <span class="comment">//表示泛型最高类型是 AppOrderResponse，只能是它或它的子类</span></span><br><span class="line">IPage&lt;? <span class="built_in">super</span> AppOrderResponse&gt;   <span class="comment">//表示泛型最低类型是 AppOrderResponse。只能是它或它的父类</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>【反射】：</strong></p>
-<p><strong>【注解】：</strong></p>
-<p><strong>【SPI和API的区别】：</strong></p>
+<p><strong>【——————–反射——————–】：</strong></p>
+<p><strong>【——————–注解——————–】：</strong></p>
+<p><strong>【——————–SPI和API的区别——————–】：</strong></p>
 <p><strong>【——————–抽象类和接口的区别——————–】：</strong></p>
 <p>抽象类的特点：</p>
 <p>a、抽象类不能被实例化只能被继承；</p>
@@ -383,6 +389,7 @@
 <p><strong>MyBatis</strong><br>MyBatis是一个基于Java的持久层框架，所谓的持久层框架就是专门用来将数据进行持久化的框架，也就是说将数据存储到数据库中的框架。学习并掌握Mybatis，首先就要了解Mybatis的核心组件。<br>Mybatis是半自动ORM映射工具，可以自定义高效的SQL语句提升数据库访问的效率。Mybatis是半自动的原因是因为我们要在Mapper文件中手写SQL语句，全自动的ORM（如Hibernate）是不需要手写SQL的。MyBatis可以自定义高效的SQL语句提升数据库访问的效率；而且MyBatis容易掌握，而Hibernate门槛较高。所以我们用Mybatis代替传统的Hibernate。</p>
 <p><strong>【——————–String的特点——————–】</strong></p>
 <p>1、String声明为final的，不可被继承；2、实现了Serializable接口：表示字符串是支持序列化的；实现了Comparable接口：表示String可以比较大小；3、内部定义了final char []  value 用于存储字符串数据；4、String不可变性体现在：①当对字符串重新赋值时，需要重写指定内存区域赋值，不能使用原有的value进行赋值；②当对现有的字符串进行链接操作时，也需要重新指定内存区域赋值；③当调用String的replace()方法修改指定字符或字符串时，也需要重新指定内存区域赋值；5、通过字面量(String s &#x3D;’abc’)的方式给一个字符串赋值，此时的字符串值声明在字符串常量池中。6、字符串常量池中不会存储相同内容的字符串。</p>
+<p><strong>注：</strong>①常量与常量的拼接结果在常量池。且常量池中不会存在相同内容的常量；②只要其中有一个是变量，结果就在堆中；③如果拼接的结果点用intern()方法，返回值就在常量池中。         **栈—&gt;堆—&gt;常量池    **</p>
 <p><strong>【——————–红黑树为什么删除效率高——————–】</strong></p>
 <p>①红黑树不追求”完全平衡”，即不像AVL那样要求节点的高度差&lt;&#x3D;1，它只要求部分达到平衡，但是提出了为节点增加颜色，红黑是用非严格的平衡来换取增删节点时候旋转次数的降低，任何不平衡都会在三次旋转之内解决，而AVL是严格平衡树，因此在增加或者删除节点的时候，根据不同情况，旋转的次数比红黑树要多。</p>
 <p>②插入节点时，AVL和RB-Tree都是最多两次树旋转来实现复衡rebalance，旋转的量级是O(1)</p>
@@ -390,6 +397,7 @@
 <p>实际应用中，若搜索的次数远远大于插入和删除，那么选择AVL，如果搜索、插入、删除次数几乎差不多，应该选择RB。</p>
 <p><strong>【——————–String、StringBuffer、StringBuilder区别——————–】</strong></p>
 <p>对String中的对象进行改变时，都会在常量池中生成一个新的对象，然后将指针指向新的对象，是线程安全的，但对于某些只希望得到最终结果的操作，则会产生大量的中间字符占用空间，<strong>所以操作少量的数据使用String</strong>；StringBuffer和StringBuilder 每次都会对对象本身进⾏操作，而不是生成新的对象并改变对象引用，StringBuffer在方法中添加了同步锁实现线程安全，<strong>所以多线程操作字符串缓冲区下操作⼤量数据适⽤StringBuffer</strong>；而相同情况下使⽤ StringBuilder 相⽐使⽤ StringBuffer 仅能获得 10%~15% 左右的性能提升，但却要冒多线程不安全的⻛险，<strong>所以单线程操作字符串缓冲区下操作⼤量数据适⽤ StringBuilder</strong>。</p>
+<p><strong>【——————–HashMap的底层实现原理——————–】</strong></p>
  
       <!-- reward -->
       

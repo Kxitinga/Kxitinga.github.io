@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">3.1k</span>
+            <span class="post-count">3.2k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">10 min</span>
+            <span class="post-count">11 min</span>
         </span>
     </span>
 </div>
@@ -109,6 +109,12 @@
 <p>JDK 是 Java Development Kit 缩写，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
 <p>JRE 是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它不能用于创建新程序。</p>
 <p><strong>JVM 并不是只有一种！只要满足 JVM 规范，每个公司、组织或者个人都可以开发自己的专属 JVM。</strong> 也就是说我们平时接触到的 HotSpot VM 仅仅是是 JVM 规范的一种实现而已。</p>
+<p><strong>【——————–throw和throws的区别——————–】</strong></p>
+<p>throw：生成一个异常对象，并抛出，使用在方法内部。&lt;–&gt;自动抛出异常对象</p>
+<p>throws：处理异常的方式，使用在方法声明处的末尾。                                       throw抛出，throws处理</p>
+<p><strong>【——————–谈谈你对同步代码块中同步监视器和共享数据的理解及各自要求——————–】</strong></p>
+<p>同步监视器：俗称锁。①任何一个类的对象都可以充当锁。②多个线程共用同一把锁。</p>
+<p>共享数据：多个线程共同操作的数据。需要使用同步机制将操作共享数据的代码包起来。</p>
 <p><strong>【——————–什么是字节码？采用字节码的好处是什么？——————–】</strong></p>
 <p>在 Java 中，JVM 可以理解的代码就叫做字节码（即扩展名为 <code>.class</code> 的文件），它不面向任何特定的处理器，只面向虚拟机。Java 语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以， Java 程序运行时相对来说还是高效的（不过，和 C++，Rust，Go 等语言还是有一定差距的），而且，由于字节码并不针对一种特定的机器，因此，Java 程序无须重新编译便可在多种不同操作系统的计算机上运行。</p>
 <p><strong>【——————–共有变量和私有变量的区别，为什么要变量私有化——————–】</strong></p>
