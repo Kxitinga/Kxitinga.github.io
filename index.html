@@ -420,55 +420,6 @@
 
     
     <article
-  id="post-SSM整合"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/05/11/SSM%E6%95%B4%E5%90%88/"
-    >SSM整合</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/05/11/SSM%E6%95%B4%E5%90%88/" class="article-date">
-  <time datetime="2023-05-11T12:19:52.000Z" itemprop="datePublished">2023-05-11</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSM/" rel="tag">SSM</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
   id="post-SpringMVC"
   class="article article-type-post"
   itemscope
@@ -942,13 +893,92 @@
 </article>
 
     
+    <article
+  id="post-Java项目-外卖平台2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/"
+    >Java项目-外卖平台2</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/" class="article-date">
+  <time datetime="2023-03-01T12:13:19.000Z" itemprop="datePublished">2023-03-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3>员工管理业务开发<h3>
+
+<p><strong>添加员工信息</strong>整个程序的执行过程</p>
+<p>①页面发送ajax请求，将新增员工页面中输入的数据以json的形式提交到服务端；</p>
+<p>②服务端Controller接收页面提交的数据并调用Service将数据进行保存；</p>
+<p>③Service调用Mapper操作数据库，保存数据；</p>
+<p>注：在添加员工信息时，当添加的账号名已经存在于数据库中时，因为username的唯一约束，会导致数据库抛出异常，此时需要我们进行异常捕获，通常有两种处理方式：</p>
+<p>①在Controller方法中加入try、catch进行异常捕获</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    employeeService.save(employee)</span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception ex)&#123;</span><br><span class="line">    R.error(<span class="string">&quot;新增员工失败&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> R.success(<span class="string">&quot;新增员工成功&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>缺点：当注册的账户很多时，进行多次判断，占用时间</p>
+<p>②使用异常处理器进行全局异常捕获</p>
+<p>整体流程</p>
+<p><img src="/2023/03/01/Java%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02/.%5CJava%E9%A1%B9%E7%9B%AE-%E5%A4%96%E5%8D%96%E5%B9%B3%E5%8F%B02%5C%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BD%AC%E8%BF%87%E7%A8%8B.png" alt="数据流转过程"></p>
+<p><strong>员工信息分页查询</strong>执行流程</p>
+<p>①页面发送ajax请求，将分页查询参数(page、pageSize、name)提交到服务端；</p>
+<p>②服务端Controller接收页面提交的数据并调用Service查询数据；<br>③Service调用Mapper操作数据库，查询分页数据；<br>④Controller将查询到的分页数据响应给页面；<br>⑤页面接收到分页数据并通过ElementUl的Table组件展示到页面上。</p>
+<p><strong>启用&#x2F;禁用员工账号</strong></p>
+<p>执行修改操作时，因为用户id是long型数据，但JSON传入long型数据会丢失精度，自动将后三位四舍五入，导致JSON传到服务端的id与实际上数据库中的id不一致，修改失败，</p>
+<p><strong>解决</strong>：服务端给页面响应json数据时进行处理，将long型数据统一转化为String字符串。 </p>
+<p>具体实现步骤：①提供对象转换器JacksonObjectMapper，基于Jackson进行Java对象到json数据的转换；②在WebMvcConfig配置类中扩展Spring mvc的消息转换器，在此消息转换器中使用提供的对象转换器进行Java对象到json数据的转换。</p>
+<p><strong>编辑员工信息</strong></p>
+<p>在开发代码之前需要梳理一下操作过程和对应的程序的执行流程:<br>①点击编辑按钮时，页面跳转到add.html，并在url中携带参数[员工id]；</p>
+<p>②在add.html页面获取url中的参数[员工id]；</p>
+<p>③发送ajax请求，请求服务端，同时提交员工id参数；</p>
+<p>④服务端接收请求，根据员工id查询员工信息，将员工信息以json形式响应给页面；</p>
+<p>⑤页面接收服务端响应的json数据，通过VUE的数据绑定进行员工信息回显；</p>
+<p>⑥点击保存按钮，发送ajax请求，将页面中的员工信息以json方式提交给服务端；</p>
+<p>⑦服务端接收员工信息，并进行处理，完成后给页面响应；</p>
+<p>⑧页面接收到服务端响应信息后进行相应处理。</p>
+</h3></h3> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E9%A1%B9%E7%9B%AE/" rel="tag">Java项目</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
